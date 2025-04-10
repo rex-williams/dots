@@ -1,3 +1,3 @@
 # dots
 
-my dotfiles
+My Dotfiles
