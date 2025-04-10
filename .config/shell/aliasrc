@@ -1,0 +1,69 @@
+#!/bin/sh
+#speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -" \
+#ytm="yt-dlp --continue --embed-thumbnail --embed-metadata --extract-audio --format \"bestaudio[ext=mp3]/best\" --paths \"$HOME/audio/music\" --output \"%(album_artist)s/%(album)s/%(autonumber)02d - %(track)s.%(ext)s\"" \
+alias \
+    abcde="abcde -c $HOME/.config/abcde/abcde.conf" \
+    bc="bc -ql" \
+    ccat="highlight --out-format=ansi" \
+    cls="clear" \
+    cp="cp -iv" \
+    diff="diff --color=auto" \
+    dir="ls" \
+    ffmpeg="ffmpeg -hide_banner" \
+    fixcd="sudo sg_raw /dev/sr1 EA 00 00 00 00 00 01" \
+    g="git" \
+    ga="git add ." \
+    gc="git commit -m " \
+    gp="git push" \
+    grep="grep --color=auto" \
+    iftop="sudo iftop -i wlan0" \
+    ip="ip -color=auto" \
+    irssi="irssi --config=\"$HOME/.config/irssi/config\" --home=\"$HOME/.config/irssi\"" \
+    ka="killall" \
+    kb="cd ~/.local/src/qmk_firmware/keyboards/keychron/v1/ansi_encoder && qmk compile -kb keychron/v1/ansi_encoder -km custom && qmk flash -kb keychron/v1/ansi_encoder -km custom" \
+    lf="lfub" \
+    ls="ls -hN --color=auto --group-directories-first" \
+    magit="nvim -c MagitOnly" \
+    mbsync="mbsync -c $MBSYNCRC" \
+    mi="doas make clean install" \
+    mkd="mkdir -pv" \
+    mutt="neomutt" \
+    mv="mv -iv" \
+    nzbget="nzbget -c ~/.config/nzbget/nzbget.conf" \
+    py3="python3" \
+    py="python" \
+    ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
+    rm="rm -vi" \
+    rsync="rsync --verbose --recursive --progress --links --update" \
+    sdn="shutdown -h now" \
+    startx="startx \"$XINITRC\"" \
+    trem="transmission-remote" \
+    unimatrix="unimatrix --speed 96 --character-list o" \
+    v="$EDITOR" \
+    weath="less -S \"$HOME.cache/weatherreport\"" \
+    yt="yt-dlp --continue --concurrent-fragments 5 --embed-metadata --format=\"bestvideo[height<=?1080]+bestaudio/best[height<=?1080]/worst\" --output \"%(title)s [%(id)s].%(ext)s\"" \
+    yta="yt-dlp --embed-metadata --extract-audio --format bestaudio/best --audio-format mp3" \
+    ytt="yt-dlp --skip-download --write-thumbnail"
+
+if command -v xbps-install >/dev/null; then
+    alias \
+        xbps-install="sudo xbps-install" \
+        xbps-query="sudo xbps-query" \
+        xbps-remove="sudo xbps-remove" \
+        xr="sudo xbps-remove -R" \
+        xs="sudo xbps-query -Rs" \
+        xu="sudo xbps-install -Syu" \
+        >/dev/null 2>&1
+    command -v xi >/dev/null || alias xi="sudo xbps-install -S"
+fi
+[ -x "$(command -v apt)" ] && alias apt="sudo apt"
+[ -x "$(command -v bat)" ] && alias cat="bat" >/dev/null 2>&1
+[ -x "$(command -v emerge)" ] && alias emerge="sudo emerge" e="emerge" ep="emerge -j$(nproc)" >/dev/null 2>&1
+[ -x "$(command -v eza)" ] && alias ls="eza -h --group-directories-first --color=auto --sort=type" >/dev/null 2>&1
+[ -x "$(command -v fastfetch)" ] && alias neofetch="fastfetch -c neofetch" >/dev/null 2>&1
+[ -x "$(command -v nvim)" ] && alias vi="nvim" vim="nvim" vimdiff="nvim -d" >/dev/null 2>&1
+[ -x "$(command -v pacman)" ] && alias pacman="sudo pacman" p="pacman" >/dev/null 2>&1
+[ -x "$(command -v powerpill)" ] && alias powerpill="sudo powerpill" >/dev/null 2>&1
+[ -x "$(command -v rg)" ] && alias grep="rg" >/dev/null 2>&1
+[ -x "$(command -v zoxide)" ] && alias cd="z" cdi="zi" >/dev/null 2>&1
+if [ -x "$(command -v doas)" ]; then alias sudo="doas"; else alias doas="sudo"; fi >/dev/null 2>&1
