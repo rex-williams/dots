@@ -1,0 +1,32 @@
+super + shift + q
+    bspc quit
+super + {Return,w,shift + w,d}
+	{$TERMINAL,$BROWSER,links -driver x,$MENU}
+super + {n,shift + r}
+    $TERMINAL -e {newsboat,htop}
+super + m
+    mpd ; $TERMINAL -e ncmpcpp
+super + i
+    xdotool type "$(grep -v '^#' "$HOME"/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)"
+super + shift + i
+    bookmarkthis
+super + r
+    record
+super + {p,comma,period}
+    mpc {toggle,prev,next}
+super + F1
+    addsong
+super + F2
+    monman
+super + {F1,F2,F9,F10}
+    {addsong,monman,mounter,unmounter}
+super + {_,ctrl,shift} + {h,j,k,l}
+    bspc node -{f,s,p} {west,south,north,east}
+super + q
+    bspc node -c
+super + space
+    bspc node -p cancel
+super + {_,shift} + {1-9,0}
+    bspc {desktop -f,node -d} {1-9,10} --follow
+super + {_,shift} + bracket{left,right}
+    bspc {monitor -f,node -m} {prev,next} --follow
