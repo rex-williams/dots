@@ -1,0 +1,10 @@
+#!/bin/sh
+set_displays &
+
+autostart="mpd dunst picom mpdsd"
+
+for program in $autostart; do
+	pidof -sx "$program" || "$program" &
+done >/dev/null 2>&1
+
+bspwm
